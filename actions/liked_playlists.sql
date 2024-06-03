@@ -4,5 +4,6 @@ CREATE TABLE actions.liked_playlists(
     added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (user_id) REFERENCES users.profile(item_id) ON DELETE CASCADE,
-    FOREIGN KEY (item_id) REFERENCES playlists.profile(item_id) ON DELETE CASCADE
+    FOREIGN KEY (item_id) REFERENCES playlists.profile(item_id) ON DELETE CASCADE,
+    UNIQUE (item_id, music_id)
 );
