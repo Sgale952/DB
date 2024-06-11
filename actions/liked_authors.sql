@@ -5,6 +5,7 @@ CREATE TABLE actions.liked_authors(
 
     FOREIGN KEY (user_id) REFERENCES users.profile(item_id) ON DELETE CASCADE,
     FOREIGN KEY (item_id) REFERENCES users.profile(item_id) ON DELETE CASCADE,
+    
     CONSTRAINT chk_different_users CHECK (user_id != item_id),
-    UNIQUE (item_id, music_id)
+    UNIQUE (user_id, item_id)
 );

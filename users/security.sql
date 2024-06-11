@@ -5,7 +5,7 @@ CREATE TABLE users.security(
     email VARCHAR(30) NOT NULL UNIQUE,
     password VARCHAR(64) NOT NULL,
     access BOOLEAN NOT NULL DEFAULT true,
-    access_role user_role NOT NULL DEFAULT 'USER'
+    access_role user_role NOT NULL DEFAULT 'USER',
 
     FOREIGN KEY (item_id) REFERENCES users.profile(item_id) ON DELETE CASCADE
 );

@@ -5,7 +5,8 @@ CREATE TABLE actions.listened_music(
 
     FOREIGN KEY (user_id) REFERENCES users.profile(item_id) ON DELETE CASCADE,
     FOREIGN KEY (item_id) REFERENCES music.profile(item_id) ON DELETE CASCADE,
-    UNIQUE (item_id, music_id)
+
+    UNIQUE (user_id, item_id)
 );
 
 CREATE OR REPLACE FUNCTION check_user_limit() RETURNS TRIGGER AS $$
@@ -23,4 +24,4 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER user_limit_trigger
 BEFORE INSERT ON actions.listened_music
 FOR EACH ROW
-EXECUTE PROCEDURE check_user_limit();
+EXECUTE FUNCTION check_user_limit();
